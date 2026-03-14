@@ -143,7 +143,7 @@ export default function HeroSection() {
                         {/* CTA Buttons */}
                         <div className="reveal-up flex flex-wrap gap-3 mt-2" style={{ transitionDelay: '0.5s' }}>
                             <a
-                                href="https://github.com/your-username"
+                                href="https://github.com/RahulSharmagtk1"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/10 text-sm font-mono text-neutral-300 hover:border-primary/40 hover:text-primary hover:bg-primary/3 transition-all duration-300"
@@ -153,7 +153,7 @@ export default function HeroSection() {
                                 <Icon name="ArrowTopRightOnSquareIcon" size={12} className="opacity-50 group-hover:opacity-100 transition-opacity" />
                             </a>
                             <a
-                                href="https://linkedin.com/in/your-profile"
+                                href="https://www.linkedin.com/in/rahul-sharma-902547237/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/10 text-sm font-mono text-neutral-300 hover:border-accent/40 hover:text-accent hover:bg-accent/3 transition-all duration-300"

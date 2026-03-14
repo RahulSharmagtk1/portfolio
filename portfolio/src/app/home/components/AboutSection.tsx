@@ -45,7 +45,7 @@ export default function AboutSection() {
                         {/* Avatar placeholder */}
                         <div className="relative w-full aspect-square max-w-xs mx-auto lg:mx-0 rounded-xl overflow-hidden border border-white/8 neon-border">
                             <AppImage
-                                src="https://img.rocket.new/generatedImages/rocket_gen_img_141317c0f-1763297703116.png"
+                                src="/assets/images/profile.png"
                                 alt="Senior Frontend Developer profile photo"
                                 width={400}
                                 height={400}
@@ -56,7 +56,7 @@ export default function AboutSection() {
                             {/* Name overlay */}
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
                                 <p className="font-mono text-sm text-primary font-semibold">
-                                    &gt; Your Name
+                                    &gt; Rahul Kumar Sharma
                                 </p>
                                 <p className="font-mono text-xs text-neutral-400">
                                     Senior Frontend Engineer
