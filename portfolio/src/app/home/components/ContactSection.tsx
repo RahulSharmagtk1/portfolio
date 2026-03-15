@@ -5,35 +5,33 @@ import Icon from '@/components/ui/AppIcon';
 interface FormData {
     name: string;
     email: string;
-    subject: string;
     message: string;
 }
 
 interface FormErrors {
     name?: string;
     email?: string;
-    subject?: string;
     message?: string;
 }
 
 const SOCIAL_LINKS = [
-    { name: 'GitHub', href: 'https://github.com/your-username', icon: 'CodeBracketIcon', color: '#00FF87' },
+    { name: 'GitHub', href: 'https://github.com/RahulSharmagtk1', icon: 'CodeBracketIcon', color: '#00FF87' },
     { name: 'LinkedIn', href: 'https://linkedin.com/in/your-profile', icon: 'LinkIcon', color: '#00D4FF' },
     { name: 'Twitter', href: 'https://twitter.com/your-handle', icon: 'ChatBubbleBottomCenterTextIcon', color: '#7B61FF' },
     { name: 'Email', href: 'mailto:your@email.com', icon: 'EnvelopeIcon', color: '#FF6B6B' },
 ];
 
 export default function ContactSection() {
-    const [form, setForm] = useState<FormData>({ name: '', email: '', subject: '', message: '' });
+    const [form, setForm] = useState<FormData>({ name: '', email: '', message: '' });
     const [errors, setErrors] = useState<FormErrors>({});
     const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+    const [errorMsg, setErrorMsg] = useState('');
 
     const validate = (): boolean => {
         const errs: FormErrors = {};
         if (!form.name.trim()) errs.name = 'Name is required';
         if (!form.email.trim()) errs.email = 'Email is required';
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Invalid email format';
-        if (!form.subject.trim()) errs.subject = 'Subject is required';
         if (!form.message.trim()) errs.message = 'Message is required';
         else if (form.message.trim().length < 20) errs.message = 'Message must be at least 20 characters';
         setErrors(errs);
@@ -44,10 +42,22 @@ export default function ContactSection() {
         e.preventDefault();
         if (!validate()) return;
         setStatus('sending');
-        // Placeholder: replace with actual API endpoint
-        await new Promise((res) => setTimeout(res, 1500));
-        setStatus('sent');
-        setForm({ name: '', email: '', subject: '', message: '' });
+        setErrorMsg('');
+        try {
+            const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+            const res = await fetch(`${supabaseUrl}/functions/v1/send-contact-email`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: form.name, email: form.email, message: form.message }),
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Failed to send message');
+            setStatus('sent');
+            setForm({ name: '', email: '', message: '' });
+        } catch (err: any) {
+            setStatus('error');
+            setErrorMsg(err.message || 'Something went wrong. Please try again.');
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -191,25 +201,6 @@ export default function ContactSection() {
                                             </div>
                                         </div>
 
-                                        {/* Subject */}
-                                        <div>
-                                            <label className="block font-mono text-[10px] text-neutral-500 mb-1.5 uppercase tracking-wider">
-                        // subject
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="subject"
-                                                value={form.subject}
-                                                onChange={handleChange}
-                                                placeholder="Project collaboration / Job opportunity"
-                                                className={`form-input w-full px-4 py-2.5 rounded-lg text-sm ${errors.subject ? 'border-red-500/50' : ''
-                                                    }`}
-                                            />
-                                            {errors.subject && (
-                                                <p className="font-mono text-[10px] text-red-400 mt-1">{errors.subject}</p>
-                                            )}
-                                        </div>
-
                                         {/* Message */}
                                         <div>
                                             <label className="block font-mono text-[10px] text-neutral-500 mb-1.5 uppercase tracking-wider">
@@ -228,6 +219,13 @@ export default function ContactSection() {
                                                 <p className="font-mono text-[10px] text-red-400 mt-1">{errors.message}</p>
                                             )}
                                         </div>
+
+                                        {/* Error message */}
+                                        {status === 'error' && (
+                                            <div className="p-3 rounded-lg border border-red-500/30 bg-red-500/5">
+                                                <p className="font-mono text-xs text-red-400">{errorMsg}</p>
+                                            </div>
+                                        )}
 
                                         {/* Submit */}
                                         <button

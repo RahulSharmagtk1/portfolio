@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
 import AppImage from '@/components/ui/AppImage';
 
@@ -27,7 +28,7 @@ const POSTS: BlogPost[] = [
         color: '#FF6B6B',
         image: "https://img.rocket.new/generatedImages/rocket_gen_img_1c281c2c8-1767428146525.png",
         imageAlt: 'Angular code on dark monitor showing component architecture',
-        href: '#'
+        href: '/blog/angular-17-signals'
     },
     {
         id: 2,
@@ -39,7 +40,7 @@ const POSTS: BlogPost[] = [
         color: '#7B61FF',
         image: "https://img.rocket.new/generatedImages/rocket_gen_img_193200e9b-1768382631471.png",
         imageAlt: 'TypeScript code showing type definitions and interfaces',
-        href: '#'
+        href: '/blog/typescript-5-4-patterns'
     },
     {
         id: 3,
@@ -51,7 +52,7 @@ const POSTS: BlogPost[] = [
         color: '#00D4FF',
         image: "https://img.rocket.new/generatedImages/rocket_gen_img_133225f29-1772085684929.png",
         imageAlt: 'React component tree diagram with server and client boundaries',
-        href: '#'
+        href: '/blog/react-server-components'
     }];
 
 
@@ -90,19 +91,18 @@ export default function BlogSection() {
                             </div>
                         </h2>
                     </div>
-                    <a
-                        href="#"
+                    <Link
+                        href="/blog"
                         className="group flex items-center gap-2 text-sm font-mono text-neutral-400 hover:text-primary transition-colors border-b border-transparent hover:border-primary/30 pb-0.5 mt-6 md:mt-0">
-
                         View All Posts
                         <Icon name="ArrowRightIcon" size={14} className="group-hover:translate-x-1 transition-transform" />
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Blog grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 observe-me stagger-children">
                     {POSTS.map((post) =>
-                        <a
+                        <Link
                             key={post.id}
                             href={post.href}
                             className="blog-card group flex flex-col bg-[#080808] border border-white/6 rounded-xl overflow-hidden hover-shine reveal-up">
@@ -155,7 +155,7 @@ export default function BlogSection() {
                                     </span>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     )}
                 </div>
             </div>

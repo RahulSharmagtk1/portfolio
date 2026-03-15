@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+
 import Icon from '@/components/ui/AppIcon';
 import AppImage from '@/components/ui/AppImage';
 
@@ -24,7 +25,7 @@ const PROJECTS: Project[] = [
         description: 'Enterprise analytics dashboard built with Angular 17 and NgRx',
         longDesc: 'A full-featured analytics platform with real-time data visualization, role-based access control, and complex state management using NgRx. Handles 100k+ daily active users.',
         tags: ['Angular', 'NgRx', 'TypeScript', 'D3.js', 'REST API'],
-        github: 'https://github.com/your-username/angulardash-pro',
+        github: 'https://github.com/RahulSharmagtk1/portfolio',
         demo: 'https://angulardash-pro.vercel.app',
         image: "https://img.rocket.new/generatedImages/rocket_gen_img_1b3b2a1bc-1772157079748.png",
         imageAlt: 'Angular analytics dashboard with charts and data visualizations',
@@ -37,7 +38,7 @@ const PROJECTS: Project[] = [
         description: 'Visual workflow builder using React and TypeScript',
         longDesc: 'Drag-and-drop workflow automation tool built with React Flow and TypeScript. Features custom node types, conditional logic, and real-time collaboration.',
         tags: ['React', 'TypeScript', 'React Flow', 'WebSocket'],
-        github: 'https://github.com/your-username/reactflow-studio',
+        github: 'https://github.com/RahulSharmagtk1/portfolio',
         demo: 'https://reactflow-studio.vercel.app',
         image: "https://img.rocket.new/generatedImages/rocket_gen_img_1490eda19-1772191448885.png",
         imageAlt: 'React workflow builder with drag and drop nodes on dark canvas',
@@ -50,7 +51,7 @@ const PROJECTS: Project[] = [
         description: 'Type-safe REST API client generator from OpenAPI specs',
         longDesc: 'CLI tool that generates fully typed TypeScript API clients from OpenAPI 3.0 specifications. Supports authentication, interceptors, and automatic retry logic.',
         tags: ['TypeScript', 'Node.js', 'OpenAPI', 'CLI'],
-        github: 'https://github.com/your-username/typesafe-api-client',
+        github: 'https://github.com/RahulSharmagtk1/portfolio',
         demo: 'https://www.npmjs.com/package/typesafe-api-client',
         image: "https://img.rocket.new/generatedImages/rocket_gen_img_12f532032-1772570811163.png",
         imageAlt: 'Code editor showing TypeScript API client generation',
@@ -63,7 +64,7 @@ const PROJECTS: Project[] = [
         description: 'Accessible React component library with 50+ components',
         longDesc: 'Production-ready component library built with React, TypeScript, and Storybook. Achieves WCAG 2.1 AA compliance, with full keyboard navigation and screen reader support.',
         tags: ['React', 'TypeScript', 'Storybook', 'WCAG', 'SCSS'],
-        github: 'https://github.com/your-username/devui-components',
+        github: 'https://github.com/RahulSharmagtk1/portfolio',
         demo: 'https://devui-storybook.vercel.app',
         image: "https://img.rocket.new/generatedImages/rocket_gen_img_102b9d6ca-1772304746624.png",
         imageAlt: 'Component library showcase with UI components on dark background',
@@ -106,7 +107,7 @@ export default function ProjectsSection() {
                         </h2>
                     </div>
                     <a
-                        href="https://github.com/your-username"
+                        href="https://github.com/RahulSharmagtk1"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group flex items-center gap-2 text-sm font-mono text-neutral-400 hover:text-primary transition-colors border-b border-transparent hover:border-primary/30 pb-0.5 mt-6 md:mt-0">
@@ -125,11 +126,21 @@ export default function ProjectsSection() {
                             onMouseEnter={() => setHoveredId(project.id)}
                             onMouseLeave={() => setHoveredId(null)}>
 
-                            <a
-                                href={project.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex flex-col md:flex-row md:items-center justify-between z-10 w-full py-10 px-4 relative">
+                            <div
+                                className="flex flex-col md:flex-row md:items-center justify-between z-10 w-full py-10 px-4 relative cursor-pointer"
+                                onClick={() => {
+                                    if (project.id === 1) {
+                                        window.location.href = '/projects/angulardash-pro';
+                                    } else if (project.id === 2) {
+                                        window.location.href = '/projects/reactflow-studio';
+                                    } else if (project.id === 3) {
+                                        window.location.href = '/projects/typesafe-api-client';
+                                    } else if (project.id === 4) {
+                                        window.location.href = '/projects/devui-components';
+                                    } else {
+                                        window.open(project.demo, '_blank', 'noopener,noreferrer');
+                                    }
+                                }}>
 
                                 <div className="flex items-center gap-6 md:w-1/2">
                                     <span
@@ -176,7 +187,7 @@ export default function ProjectsSection() {
 
                                     </div>
                                 </div>
-                            </a>
+                            </div>
 
                             {/* Hover image preview */}
                             <div

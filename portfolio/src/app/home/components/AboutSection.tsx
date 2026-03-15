@@ -13,8 +13,8 @@ const EXPERTISE = [
 
 
 const HIGHLIGHTS = [
-    { icon: 'BriefcaseIcon', label: '5+ Years Experience' },
-    { icon: 'CodeBracketIcon', label: '40+ Projects Shipped' },
+    { icon: 'BriefcaseIcon', label: '7+ Years Experience' },
+    { icon: 'CodeBracketIcon', label: '4+ Projects Shipped' },
     { icon: 'UserGroupIcon', label: 'Agile / Scrum Teams' },
     { icon: 'StarIcon', label: 'Open Source Contributor' }];
 
@@ -98,7 +98,7 @@ export default function AboutSection() {
                         <div className="observe-me reveal-up space-y-4 font-body text-neutral-400 text-base leading-relaxed">
                             <p>
                                 I'm a Senior Frontend Engineer with{' '}
-                                <span className="text-white font-medium">5+ years of experience</span>{' '}
+                                <span className="text-white font-medium">7+ years of experience</span>{' '}
                                 building scalable, accessible web applications. I specialize in{' '}
                                 <span className="text-primary font-mono">Angular</span> and{' '}
                                 <span className="text-accent-blue font-mono">React</span> ecosystems,

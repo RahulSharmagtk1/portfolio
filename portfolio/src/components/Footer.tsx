@@ -3,7 +3,7 @@ import AppLogo from '@/components/ui/AppLogo';
 import Icon from '@/components/ui/AppIcon';
 
 const socialLinks = [
-    { name: 'GitHub', href: 'https://github.com/your-username', icon: 'CodeBracketIcon' },
+    { name: 'GitHub', href: 'https://github.com/RahulSharmagtk1', icon: 'CodeBracketIcon' },
     { name: 'LinkedIn', href: 'https://linkedin.com/in/your-profile', icon: 'LinkIcon' },
     { name: 'Twitter', href: 'https://twitter.com/your-handle', icon: 'ChatBubbleBottomCenterTextIcon' },
 ];

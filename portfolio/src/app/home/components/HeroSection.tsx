@@ -72,7 +72,7 @@ export default function HeroSection() {
             <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     {/* LEFT: Content */}
-                    <div className="lg:col-span-7 flex flex-col gap-6">
+                    <div className="lg:col-span-7 flex flex-col gap-6" suppressHydrationWarning>
                         {/* Status badge */}
                         <div className="reveal-up flex items-center gap-3">
                             <span className="w-2 h-2 rounded-full bg-primary shadow-neon-sm animate-pulse" />

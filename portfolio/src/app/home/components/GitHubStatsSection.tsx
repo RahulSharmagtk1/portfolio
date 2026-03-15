@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Icon from '@/components/ui/AppIcon';
 
 const STATS = [
@@ -9,11 +9,6 @@ const STATS = [
     { label: 'Stars Earned', value: '2.1K', icon: 'StarIcon', color: '#FF6B6B' },
 ];
 
-const CONTRIB_GRID = Array.from({ length: 52 * 7 }, (_, i) => ({
-    active: Math.random() > 0.55,
-    intensity: Math.floor(Math.random() * 4),
-}));
-
 const LANG_STATS = [
     { name: 'TypeScript', pct: 42, color: '#7B61FF' },
     { name: 'JavaScript', pct: 28, color: '#00FF87' },
@@ -22,6 +17,17 @@ const LANG_STATS = [
 ];
 
 export default function GitHubStatsSection() {
+    const [contribGrid, setContribGrid] = useState<{ active: boolean; intensity: number }[]>([]);
+
+    useEffect(() => {
+        setContribGrid(
+            Array.from({ length: 52 * 7 }, () => ({
+                active: Math.random() > 0.55,
+                intensity: Math.floor(Math.random() * 4),
+            }))
+        );
+    }, []);
+
     return (
         <section
             id="github"
@@ -128,7 +134,7 @@ export default function GitHubStatsSection() {
                                         gridTemplateRows: 'repeat(7, 1fr)',
                                     }}
                                 >
-                                    {CONTRIB_GRID.map((cell, i) => (
+                                    {contribGrid.map((cell, i) => (
                                         <div
                                             key={i}
                                             className="aspect-square rounded-sm transition-all duration-200 hover:scale-150"
